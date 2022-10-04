@@ -1,0 +1,149 @@
+/*
+STUDENT NAME: Regina Barry
+SEMESTER: Fall 2022 
+SECTION:71785
+ASSIGNMENT #: 1
+
+
+Instructions
+Write a C++ program that reads students' names and test scores from a text file. The program should ouput each student's name followed by their test score and the grade. You will create the data for each student, using fictitious names, scores, and grades.
+
+//Include libraries
+#inlude <iostream>
+#inlude <string>
+#include <fstream>
+#include <iomanip>
+//Use std namespace
+using namespace std;
+//Define a structure "studentType"
+struct studentType
+{
+    //Declare variables
+    string studentFName;
+    string studentLName;
+
+    double testScore;
+    char grade;
+};
+
+/*Function Prototypes*/
+void lgetData(ifstream& inFile, studentType sList[], int listSize);
+void lcalculateGrade(studentType, sList[], int listSize);
+int lhighestScore(const studentType sList[], in listSize);
+void lprintResult(const studentType sList[], int listSize);
+//Define main function
+int main()
+{
+    //Define in variable
+    ifstream in;
+    //Open student file
+    if(in.fail())
+    {
+        //Display message
+        cout<<"file did not open please check it\in";
+        //Pause console window
+        system("pause");
+        //Exit
+        system("exit");
+    }
+    //Define array
+    studentType sList[30];
+    //Call "lcalculateGrade()"
+    lcalculateGrade(sList,6);
+    //Call "lprintResult()"
+    lprintResult(sList,6);
+    //Close
+    in.close();
+    //Pause console window
+    system("pause");
+    //Return 0
+    return 0;
+}
+//Define lgetData()
+void lgetData(ifstream& inFile,studentType sLiost[],int listSize)
+{
+    //Declare variables
+    int n=0;
+    //Loop until list size
+    while(n<listSize)
+    {
+        //Store data
+infile>>sList[n].studentLName>>sList[n].studentFName>>sList[n].testScore;
+        //Increment counter
+        n++;
+    }
+    
+}
+//Define lcalculateGrade()
+void lcalculateGrade(studentType sList[], int listSize)
+{
+    //Declare variable
+    int i;
+    //Loop until length
+    for(i=0;i<listSize;i++)
+    //If score less than 60
+    if(sList[i].testScore<60)
+    //Set grade
+    sList[i].grade='F';
+    //If score less than 70
+    else if (sList[i].testScore<70)
+    //Set grade
+    sList[i].grade='D';
+    //If score less than 80
+    else if (sList[i].testScore<80)
+    //Set grade
+    sList[i].grade='C';
+    //If score less than 90
+    else if (sList[i].testScore<90)
+    //Set grade
+    sList[i].grade='B';
+    //If score greater than 90
+    else if (sList[i].testScore>90)
+    //Set grade
+    sList[i].grade='A';
+}
+//Define lhighestScore()
+int lhighestScore(const studentType sList[], int listSize)
+{
+    //Declare Variables
+    int high=0,i;
+    //Loop until length
+    for(i=0;i<listSize;i++)
+    //If high value is less than score
+    if (high < sList[i].testScore )
+    //Set score as high
+    high=sList[i].testScore;
+    //Return high
+    return high;
+}
+//Define iprintResult()
+void lprintResult(const studentType sList[], int listSize)
+{
+    //Display result
+cout<<left<<setw(30)<<"Last Name, First Name"<<right<<setw(20)<<"Test Score"<<right<<setw(7)<<"Grade"<<end1;
+    //Declare variables
+    string name;
+    int high i;
+    //Loop until length
+    for(i=0;i<listSize;i++)
+    {
+        //Set name
+        name=sList[i].studentLName+","sList[i].studentFName;
+        //Display message
+    cout<<left<<setw(30)<<name<<right<<setw(20)<<sList[i].testScore<<right<<setw(7)<<sList[i].grade<<end1;
+    }
+    //Set new line
+    cout<<end1;
+    //Call lhighestScore()
+    high=lhighestSCore(sList, listSize);
+    //Display message
+    cout<<"Highest Test Score:"<<high<<end1;
+    //Display result
+    cont<<"Students having the highest test score:"<<end1;
+    //Loop until length
+    for (int i=0; i < listSize; i++)
+    //If score is high
+    if (sList[i].testScore==high )
+    //Display student name
+cout<<sList[i].studentLName<<","<<sList[i].studentFName<<end1;
+}
